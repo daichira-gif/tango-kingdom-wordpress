@@ -26,11 +26,11 @@ Local by Flywheel、XAMPP、MAMP、DockerなどのWordPress開発環境をご利
 
 `app/sql/local.sql` にサイトのデータベースダンプが含まれています。ローカル環境のデータベースにこのファイルをインポートしてください。
 
-**注意:** `tango-kingdom-migration-files.zip` にも `local.sql` が含まれています。これは、メディアファイルと合わせてサイト移行のために圧縮されたものです。
+**注意:** データベースのバックアップは `sql_backup.tar.gz` として別途管理されています。
 
 ### 4. メディアファイルの配置
 
-`tango-kingdom-migration-files.zip` に含まれる `app/public/wp-content/uploads/` ディレクトリを、ローカル環境のWordPressインストール内の `wp-content/` ディレクトリに配置してください。
+`app/public/wp-content/uploads/` ディレクトリに、必要なメディアファイルを配置してください。これらのファイルはGitの管理対象外です。
 
 ### 5. WordPressのURL更新
 
@@ -55,6 +55,7 @@ Local by Flywheel、XAMPP、MAMP、DockerなどのWordPress開発環境をご利
 *   **Kadence Blocks:** このサイトではKadence Blocksプラグインを多用しています。アコーディオンブロックの動作には、特定のHTML構造とJSONデータが必要です。
     *   **留意点:** 以前の作業で、アコーディオンブロックのコードがWordPressの自動修正機能によって調整されることが確認されました。これは、Kadence Blocksが期待する厳密な構文に合致させるためのものです。手動でコードを編集する際は、WordPressのビジュアルエディタで生成されるコードを参考にすることをお勧めします。
 *   **子テーマ (`kadence-child`):** カスタムCSSや機能追加は、この子テーマの `style.css` や `functions.php` に記述されています。親テーマのアップデートに影響されないよう、子テーマでの開発を推奨します。
+*   **カスタムCSS (`custom_style.css`):** サイト全体のデザイン調整や、特定のカスタムHTMLブロックにスタイルを適用するために使用されます。このファイルは子テーマの `functions.php` から読み込まれます。
 
 ### 7. Git運用に関する留意点
 
@@ -64,4 +65,11 @@ Local by Flywheel、XAMPP、MAMP、DockerなどのWordPress開発環境をご利
 ## 成果物
 
 *   `page-faq.html`: 修正された「よくある質問」ページのHTMLコンテンツ。
-*   `tango-kingdom-migration-files.zip`: データベースのダンプファイル (`app/sql/local.sql`) およびアップロードされたメディアファイル (`app/public/wp-content/uploads/`) を含む圧縮アーカイブ。
+*   `page-harvest-farm.html`: 「収穫体験農園」ページのHTMLコンテンツ。
+*   `page-small-zoo.html`: 「小さな動物園」ページのHTMLコンテンツ。
+*   `page-grass-sliding.html`: 「芝すべり」ページのHTMLコンテンツ。
+*   `page-wood-athletic.html`: 「木製アスレチック広場」ページのHTMLコンテンツ。
+*   `page-blueberry-farm.html`: 「ブルーベリー園」ページのHTMLコンテンツ。
+*   `page-forest-walk.html`: 「森の散策路」ページのHTMLコンテンツ。
+*   `page-tango-takumian.html`: 「お土産処 丹後匠庵」ページのHTMLコンテンツ。
+*   `sql_backup.tar.gz`: データベースのダンプファイル (`app/sql/local.sql`) の圧縮アーカイブ。Git管理対象外。
