@@ -18,6 +18,9 @@ function kadence_child_enqueue_styles() {
 	// Enqueue the child theme's stylesheet.
 	// This will load after the parent theme's stylesheet, allowing for overrides.
     wp_enqueue_style( 'kadence-child-style', get_stylesheet_uri(), array( 'kadence-parent-style' ) );
+
+	// Enqueue custom_style.css for temporary design changes.
+    wp_enqueue_style( 'tango-kingdom-custom-style', get_stylesheet_directory_uri() . '/custom_style.css', array( 'kadence-child-style' ), null );
 }
 
 

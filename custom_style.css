@@ -1,0 +1,327 @@
+/*
+ * Tango Kingdom リニューアルサイト用 - カスタムCSSオーバーライド
+ * 子テーマに配置するか、functions.php から読み込んでください
+ */
+
+/* 1. グローバル設定 - アクセントカラーとタイポグラフィ */
+:root {
+  --tk-accent: #E07A5F;           /* メインアクセントカラー（オレンジ） */
+  --tk-accent-hover: #D66B50;     /* ホバー時アクセント */
+  --tk-shade: rgba(0, 0, 0, 0.1);  /* ソフトシャドウ用グレー */
+  --tk-transition: all 0.3s ease;  /* トランジション */
+  --tk-font-heading: 'Noto Serif JP', serif;
+  --tk-font-body: 'Noto Sans JP', sans-serif;
+}
+
+body {
+  font-family: var(--tk-font-body);
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--tk-font-heading);
+  color: #222;
+}
+
+/* 2. ヒーローセクション - パララックス背景 */
+.tk-hero {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+/* 可読性確保のオーバーレイ */
+.tk-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.tk-hero .hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+/* 3. 店舗一覧カード */
+.tk-store-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.tk-store-card {
+  background: #fff;
+  border: 1px solid var(--tk-shade);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: var(--tk-transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.tk-store-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tk-store-card .card-body {
+  padding: 1rem;
+  flex: 1;
+}
+
+.tk-store-card .card-body h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.tk-store-card .card-body p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* ホバーで持ち上がり＆シャドウ */
+.tk-store-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--tk-shade);
+  border-color: var(--tk-accent);
+}
+
+/* 4. カテゴリフィルタボタン */
+.tk-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tk-filter-button {
+  background: #fff;
+  border: 2px solid var(--tk-accent);
+  color: var(--tk-accent);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: var(--tk-transition);
+  font-size: 0.9rem;
+}
+
+/* アクティブ or ホバー時 */
+.tk-filter-button.active,
+.tk-filter-button:hover {
+  background: var(--tk-accent);
+  color: #fff;
+}
+
+/* 5. CTAボタン */
+.tk-btn {
+  display: inline-block;
+  background: var(--tk-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--tk-transition);
+}
+
+.tk-btn:hover {
+  background: var(--tk-accent-hover);
+  text-decoration: none;
+}
+
+/* 6. 店舗詳細ページのタブ切り替え */
+.tk-tabs {
+  margin: 2rem 0;
+}
+
+.tk-tabs-nav {
+  display: flex;
+  border-bottom: 2px solid var(--tk-shade);
+  margin-bottom: 1rem;
+}
+
+.tk-tabs-nav button {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--tk-transition);
+}
+
+/* 選択中のタブ */
+.tk-tabs-nav button.active {
+  border-bottom: 3px solid var(--tk-accent);
+  font-weight: 600;
+}
+
+.tk-tabs-content > div {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.tk-tabs-content > div.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 7. フッターのアクセント */
+.site-footer {
+  background: #222;
+  color: #ccc;
+  padding: 2rem 0;
+}
+
+.site-footer a {
+  color: var(--tk-accent);
+  transition: var(--tk-transition);
+}
+
+.site-footer a:hover {
+  color: var(--tk-accent-hover);
+}
+
+/* 8. 収穫体験農園ページ固有のスタイル */
+.harvest-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.harvest-hero-section {
+  position: relative;
+  height: 400px; /* 適切な高さに調整 */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.harvest-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* オーバーレイ */
+  z-index: 0;
+}
+
+.harvest-hero-section h1 {
+  position: relative;
+  z-index: 1;
+  font-size: 3.5rem;
+  margin: 0;
+  color: #fff;
+}
+
+.harvest-section {
+  background: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px var(--tk-shade);
+}
+
+.harvest-section h2 {
+  color: var(--tk-accent);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--tk-accent);
+  padding-bottom: 0.5rem;
+}
+
+.harvest-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.harvest-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px var(--tk-shade);
+  transition: transform 0.3s ease;
+}
+
+.harvest-gallery img:hover {
+  transform: scale(1.03);
+}
+
+.harvest-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.harvest-info-item {
+  background: var(--tk-shade); /* 薄いグレーの背景 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border-left: 5px solid var(--tk-accent);
+}
+
+.harvest-info-item strong {
+  color: var(--tk-accent);
+}
+
+.harvest-info-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.harvest-info-item ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.harvest-info-item ul li::before {
+  content: '🥕'; /* アイコンの代わりに絵文字を使用 */
+  position: absolute;
+  left: 0;
+  color: var(--tk-accent);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .harvest-hero-section h1 {
+    font-size: 2.5rem;
+  }
+  .harvest-page-container {
+    padding: 1rem;
+  }
+  .harvest-section {
+    padding: 1.5rem;
+  }
+}
