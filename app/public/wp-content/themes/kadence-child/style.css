@@ -1,0 +1,16 @@
+/*
+Theme Name: Kadence Child
+Theme URI: https://www.kadencewp.com/
+Description: Kadence Child Theme
+Author: Kadence WP
+Author URI: https://www.kadencewp.com/
+Template: kadence
+Version: 1.0.0
+*/
+
+/*
+ * ヘッダーのページタイトルを非表示にするCSS
+ */
+.site-header .entry-title {
+    display: none;
+}
